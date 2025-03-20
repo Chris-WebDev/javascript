@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hover Grid with Images</title>
+    <style>
+        .hero-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            padding: 20px;
+        }
+        .hero-content {
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-content img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.3s;
+        }
+        .hero-content:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+<div class="hero-grid" id="hero-grid">
+    <div class="hero-content">
+        <img src="https://placebear.com/1280/720" alt="Random Image 1">
+    </div>
+    <div class="hero-content">
+        <img src="https://fakeimg.pl/1280x720" alt="Random Image 2">
+    </div>
+    <div class="hero-content">
+        <img src="https://picsum.photos/1280/720" alt="Random Image 3">
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("DOM fully loaded and parsed");
+
+    const heroContents = document.querySelectorAll('.hero-content img');
+
+    heroContents.forEach((img) => {
+        img.addEventListener('mouseover', function() {
+            document.body.style.setProperty('background-image', `url(${this.src})`, 'important');
+        });
+    });
+});
+</script>
+</body>
+</html>
